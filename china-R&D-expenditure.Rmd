@@ -1,0 +1,47 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(scales)
+library(lubridate)
+theme_set(theme_light())
+
+source_raw <- read_csv("china-R&D-source.csv")
+
+source_cleaned <- read_csv("china-R&D-source.csv", skip = 25) %>% 
+  rename("year" = "No. of Obs", 
+         "government" = "18", 
+         "enterprise" = "18_1", 
+         "foreign" = "17", 
+         "others" = "17_1")
+  
+expenditure_raw <- read_csv("china-R&D-expenditure.csv")
+
+expenditure_cleaned <- read_csv("china-R&D-expenditure.csv", skip = 25) %>% 
+  select(-X6, -X14) %>% 
+  rename("year" = "No. of Obs", 
+         "total" = "30", 
+         "basic_research" = "26", 
+         "applied_research" = "25", 
+         "experimental_development" = "25_1", 
+         "manufacturing_industry" = "15", 
+         "hightech_industry_total" = "21", 
+         "hightech_aircraft" = "17", 
+         "hightech_computer" = "19", 
+         "hightech_electronic-telecom" = "19_1", 
+         "hightech_medical-equip" = "19_2", 
+         "hightech_medical-pharma-product" = "19_3", 
+         "r&d_institution" = "25_2", 
+         "enterprise" = "21_1", 
+         "enterprise_large-medium" = "25_3", 
+         "higher_education" = "25_4", 
+         "other" = "20")
+```
+
