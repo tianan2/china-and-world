@@ -1,0 +1,39 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(lubridate)
+library(scales)
+theme_set(theme_light())
+
+china_soes_raw <- read_csv("china-enterprises-state-holdong.csv") %>% select(-2)
+
+soes_cleaned <- read_csv("china-enterprises-state-holdong.csv", skip = 25) %>% 
+  select(-2) %>% 
+  rename("year" = "No. of Obs", 
+         "no_of_enterprise" = "240", 
+         "product_inventory" = "240_1", 
+         "asset" = "240_2", 
+         "sales_revenue_ytd" = "240_3", 
+         "profit_ytd" = "240_4", 
+         "principal_business_profit_ytd" = "140", 
+         "asset_contribution_ratio" = "164", 
+         "liabiities_to_asset_ratio" = "240_5", 
+         "current_asset_turnover_ration" = "164_1", 
+         "profit_to_costs_ratio_ytd" = "164_2", 
+         "product_inventory_yoy" = "162", 
+         "sales_revenue_ytd_yoy" = "236", 
+         "asset_yoy" = "236_1", 
+         "profit_ytd_yoy" = "236_2", 
+         "principal_business_profit_ytd_yoy" = "231")
+  
+  
+```
+
